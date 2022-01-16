@@ -59,7 +59,9 @@ module Contentful
 
         client.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type, client))
 
-        { fields: fields_for_create }
+        atts = { fields: fields_for_create }
+        atts[:metadata] = attributes[:metadata] if attributes[:metadata]
+        return atts
       end
 
       # @private
